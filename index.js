@@ -3,11 +3,13 @@ const bodyParser = require("body-parser");
 const userRoute = require("./routes/userRoute");
 const newsRoute = require("./routes/newsRoute");
 const tipsRoute = require("./routes/tipsRoute");
+const indexRoute = require("./routes/indexRoute");
 const db = require("./config/db");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 const app = express();
-const port = 3030;
+const port = process.env.PORT || 3030;
 
 // konfigurasi library
 dotenv.config();
@@ -15,9 +17,11 @@ dotenv.config();
 // middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use(userRoute);
 app.use(newsRoute);
 app.use(tipsRoute);
+app.use(indexRoute);
 
 // cek koneksi db
 (async () => {
