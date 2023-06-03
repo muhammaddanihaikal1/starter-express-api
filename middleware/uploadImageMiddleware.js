@@ -4,7 +4,7 @@ const multer = require("multer");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // Tentukan direktori penyimpanan file
-    cb(null, "gambar/");
+    cb(null, "tmp/");
   },
   filename: function (req, file, cb) {
     // Tentukan nama file yang disimpan
