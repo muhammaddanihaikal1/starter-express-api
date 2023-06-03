@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const userRoute = require("./routes/userRoute");
 const newsRoute = require("./routes/newsRoute");
 const tipsRoute = require("./routes/tipsRoute");
-const indexRoute = require("./routes/indexRoute");
 const db = require("./config/db");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -21,7 +20,6 @@ app.use(cors());
 app.use(userRoute);
 app.use(newsRoute);
 app.use(tipsRoute);
-app.use(indexRoute);
 
 // cek koneksi db
 (async () => {
