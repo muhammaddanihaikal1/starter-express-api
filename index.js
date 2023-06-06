@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const userRoute = require("./routes/userRoute");
 const newsRoute = require("./routes/newsRoute");
 const tipsRoute = require("./routes/tipsRoute");
+const programRoute = require("./routes/programRoute");
 const db = require("./config/db");
 const dotenv = require("dotenv");
 
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 app.use(userRoute);
 app.use(newsRoute);
 app.use(tipsRoute);
+app.use(programRoute);
 
 // cek koneksi db
 (async () => {
