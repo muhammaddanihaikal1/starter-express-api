@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "skilvul_final",
+    "password": "skilvul_final123",
+    "database": "skilvul_final",
+    "host": "db4free.net",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "skilvul_final",
+    "password": "skilvul_final123",
+    "database": "skilvul_final",
+    "host": "db4free.net",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "skilvul_final",
+    "password": "skilvul_final123",
+    "database": "skilvul_final",
+    "host": "db4free.net",
+    "dialect": "mysql"
+  }
+}
