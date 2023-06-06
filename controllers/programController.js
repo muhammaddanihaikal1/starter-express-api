@@ -206,7 +206,7 @@ const deleteProgramByIdController = async (req, res) => {
     // berikan response success
     return res.json({
       status: "success",
-      message: "News berhasil dihapus",
+      message: "Program berhasil dihapus",
     });
   } catch (error) {
     // berikan response error
