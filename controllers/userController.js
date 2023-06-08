@@ -61,7 +61,10 @@ const registerUserController = async (req, res) => {
       },
     });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({
+      status: "error",
+      message: error.message,
+    });
   }
 };
 
@@ -103,9 +106,18 @@ const loginUserController = async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ email }, process.env.LOGIN_TOKEN_KEY, {
-      expiresIn: "60s",
+    // object payload
+    const payload = {
+      email,
+      nama: user.nama,
+    };
+
+    const token = jwt.sign(payload, process.env.LOGIN_TOKEN_KEY, {
+      expiresIn: "1h",
     });
+
+    // simpan token di db
+    await user.update({ token });
 
     // berikan response success dan token di header
     return res.header("Authorization", token).json({
@@ -113,8 +125,64 @@ const loginUserController = async (req, res) => {
       message: "Login Berhasil",
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({
+      status: "error",
+      message: error.message,
+    });
   }
 };
 
-module.exports = { registerUserController, loginUserController };
+const logoutUserController = async (req, res) => {
+  try {
+    // mengambil data token
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(" ")[1];
+
+    // validasi: jika tidak ada token
+    if (!token) {
+      // berikan response error
+      return res.status(401).json({
+        status: "error",
+        message: "Token tidak ditemukan",
+      });
+    }
+
+    // verifikasi token
+    jwt.verify(token, process.env.LOGIN_TOKEN_KEY, async (error, decoded) => {
+      if (error) {
+        // berikan response error
+        return res.status(401).json({
+          status: "error",
+          message: "Token tidak valid",
+        });
+      }
+
+      // hapus token di db
+      await User.update(
+        { token: "" },
+        {
+          where: {
+            email: decoded.email,
+          },
+        }
+      );
+
+      // berikan response success
+      return res.json({
+        status: "success",
+        message: "Logout berhasil",
+      });
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: "error",
+      message: error.message,
+    });
+  }
+};
+
+module.exports = {
+  registerUserController,
+  loginUserController,
+  logoutUserController,
+};

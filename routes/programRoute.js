@@ -13,30 +13,16 @@ const programRoute = express.Router();
 
 programRoute.post(
   "/api/program",
-  authenticateTokenMiddleware,
   uploadImageMiddleware.single("gambar"),
   addProgramController
 );
-programRoute.get(
-  "/api/program",
-  authenticateTokenMiddleware,
-  getProgramController
-);
-programRoute.get(
-  "/api/program/:id",
-  authenticateTokenMiddleware,
-  getProgramByIdController
-);
+programRoute.get("/api/program", getProgramController);
+programRoute.get("/api/program/:id", getProgramByIdController);
 programRoute.put(
   "/api/program/:id",
-  authenticateTokenMiddleware,
   uploadImageMiddleware.single("gambar"),
   editProgramByIdController
 );
-programRoute.delete(
-  "/api/program/:id",
-  authenticateTokenMiddleware,
-  deleteProgramByIdController
-);
+programRoute.delete("/api/program/:id", deleteProgramByIdController);
 
 module.exports = programRoute;

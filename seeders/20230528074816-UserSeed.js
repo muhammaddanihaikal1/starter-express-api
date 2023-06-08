@@ -10,19 +10,22 @@ module.exports = {
           email: "user1@gmail.com",
           nama: "user1",
           password:
-            "$2b$10$FTGTo4jtk98yI1IxdiZlTuefTnPKQe5qyPbhg7O8a6evBBi6riPfW", // 123
+            "$2b$10$FTGTo4jtk98yI1IxdiZlTuefTnPKQe5qyPbhg7O8a6evBBi6riPfW",
+          token: "",
         },
         {
           email: "user2@gmail.com",
           nama: "user3",
           password:
-            "$2b$10$FTGTo4jtk98yI1IxdiZlTuefTnPKQe5qyPbhg7O8a6evBBi6riPfW", // 123
+            "$2b$10$FTGTo4jtk98yI1IxdiZlTuefTnPKQe5qyPbhg7O8a6evBBi6riPfW",
+          token: "",
         },
         {
           email: "user3@gmail.com",
           nama: "user3",
           password:
-            "$2b$10$FTGTo4jtk98yI1IxdiZlTuefTnPKQe5qyPbhg7O8a6evBBi6riPfW", // 123
+            "$2b$10$FTGTo4jtk98yI1IxdiZlTuefTnPKQe5qyPbhg7O8a6evBBi6riPfW",
+          token: "",
         },
       ],
       {}

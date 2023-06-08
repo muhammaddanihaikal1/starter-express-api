@@ -6,6 +6,7 @@ const tipsRoute = require("./routes/tipsRoute");
 const programRoute = require("./routes/programRoute");
 const db = require("./config/db");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 const app = express();
 const port = 3030;
@@ -20,6 +21,7 @@ app.use(userRoute);
 app.use(newsRoute);
 app.use(tipsRoute);
 app.use(programRoute);
+app.use(cors());
 
 // cek koneksi db
 (async () => {
