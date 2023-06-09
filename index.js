@@ -15,13 +15,13 @@ const port = 3030;
 dotenv.config();
 
 // middleware
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(userRoute);
 app.use(newsRoute);
 app.use(tipsRoute);
 app.use(programRoute);
-app.use(cors());
 
 // cek koneksi db
 (async () => {
