@@ -1,21 +1,21 @@
-const Program = require("../models").Program;
-const { nanoid } = require("nanoid");
-const uploadImageToImgBB = require("../utils/uploadImageToImgBB");
-const dayjs = require("dayjs");
-require("dayjs/locale/id");
+const Program = require('../models').Program;
+const { nanoid } = require('nanoid');
+const uploadImageToImgBB = require('../utils/uploadImageToImgBB');
+const dayjs = require('dayjs');
+require('dayjs/locale/id');
 
 const addProgramController = async (req, res) => {
   try {
     // mengambil data
-    const id = "program-" + nanoid(4);
+    const id = 'program-' + nanoid(4);
     const { judul, isi, waktu, link } = req.body;
     const imageBuffer = req.file ? req.file.buffer : null;
 
     // validasi: jika user tidak mengirimkan data news lengkap
     if (!judul || !isi || !waktu || !link) {
       return res.status(400).json({
-        status: "error",
-        message: "Semua data judul, isi, waktu dan link harus diisi",
+        status: 'error',
+        message: 'Semua data judul, isi, waktu dan link harus diisi',
       });
     }
 
@@ -41,8 +41,8 @@ const addProgramController = async (req, res) => {
 
     // berikan response success
     return res.status(201).json({
-      status: "success",
-      message: "Program berhasil dibuat",
+      status: 'success',
+      message: 'Program berhasil dibuat',
       data: {
         id,
       },
@@ -50,7 +50,7 @@ const addProgramController = async (req, res) => {
   } catch (error) {
     // berikan response error
     return res.status(500).json({
-      status: "error",
+      status: 'error',
       message: error.message,
     });
   }
@@ -63,8 +63,8 @@ const getProgramController = async (req, res) => {
 
     // berikan response success
     return res.json({
-      status: "success",
-      message: "Berhasil mengambil semua program",
+      status: 'success',
+      message: 'Berhasil mengambil semua program',
       data: {
         program,
       },
@@ -72,7 +72,7 @@ const getProgramController = async (req, res) => {
   } catch (error) {
     // berikan response error
     return res.status(500).json({
-      status: "error",
+      status: 'error',
       message: error.message,
     });
   }
@@ -94,15 +94,15 @@ const getProgramByIdController = async (req, res) => {
     if (!program) {
       // berikan response error
       return res.status(404).json({
-        status: "error",
-        message: "Program tidak ditemukan",
+        status: 'error',
+        message: 'Program tidak ditemukan',
       });
     }
 
     // berikan response success
     return res.json({
-      status: "success",
-      message: "Berhasil mengambil satu program",
+      status: 'success',
+      message: 'Berhasil mengambil satu program',
       data: {
         program,
       },
@@ -110,7 +110,7 @@ const getProgramByIdController = async (req, res) => {
   } catch (error) {
     // berikan response error
     return res.status(500).json({
-      status: "error",
+      status: 'error',
       message: error.message,
     });
   }
@@ -135,8 +135,8 @@ const editProgramByIdController = async (req, res) => {
     // validasi: berikan response error, ketika data yang dicari tidak ada
     if (!program) {
       return res.status(404).json({
-        status: "error",
-        message: "Program tidak ditemukan",
+        status: 'error',
+        message: 'Program tidak ditemukan',
       });
     }
 
@@ -165,13 +165,13 @@ const editProgramByIdController = async (req, res) => {
 
     // berikan response success
     return res.json({
-      status: "success",
-      message: "Program berhasil dirubah",
+      status: 'success',
+      message: 'Program berhasil dirubah',
     });
   } catch (error) {
     // berikan response error
     return res.status(500).json({
-      status: "error",
+      status: 'error',
       message: error.message,
     });
   }
@@ -191,8 +191,8 @@ const deleteProgramByIdController = async (req, res) => {
     if (!program) {
       // berikan response error
       return res.status(404).json({
-        status: "error",
-        message: "Program tidak ditemukan",
+        status: 'error',
+        message: 'Program tidak ditemukan',
       });
     }
 
@@ -205,13 +205,13 @@ const deleteProgramByIdController = async (req, res) => {
 
     // berikan response success
     return res.json({
-      status: "success",
-      message: "News berhasil dihapus",
+      status: 'success',
+      message: 'Program berhasil dihapus',
     });
   } catch (error) {
     // berikan response error
     return res.status(500).json({
-      status: "error",
+      status: 'error',
       message: error.message,
     });
   }

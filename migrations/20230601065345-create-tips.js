@@ -15,6 +15,9 @@ module.exports = {
       isi: {
         type: Sequelize.TEXT,
       },
+      gambar: {
+        type: Sequelize.STRING,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
