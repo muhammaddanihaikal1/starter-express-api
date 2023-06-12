@@ -13,9 +13,12 @@ const port = 3030;
 
 // konfigurasi library
 dotenv.config();
+const corsOptions = {
+  exposedHeaders: "Authorization",
+};
 
 // middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(userRoute);
